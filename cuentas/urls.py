@@ -9,4 +9,5 @@ app_name = 'cuentas'
 urlpatterns = [
     re_path(r'^logup/$', views.logup_view, name='logup'),
     re_path(r'^login/$', views.login_view, name='login'),
+    re_path(r'^logout/$', views.logout_view, name= 'logout'),
 ]

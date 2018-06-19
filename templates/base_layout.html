@@ -6,8 +6,21 @@
         <link rel="stylesheet" href="{% static 'styles.css'%}">
     </head>
     <body>
-        <div class="wrapper">
+        <header class="wrapper">
             <h1><a href="{% url 'articulos:lista' %}"><img src="{% static 'logo.jpg' %}"/></a> </h1>
+            <nav>
+                <ul>
+                    <li>
+                        <form class = "logout-link" action="{% url 'cuentas:logout' %}" method="POST">
+                            {% csrf_token %}
+                            <button type="submit">Logout</button>
+                        </form>
+                    </li>
+                </ul>
+            </nav>
+
+        </header>
+        <div class = "wrapper">
             {% block content%}
             {% endblock %}
         </div>
