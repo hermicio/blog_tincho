@@ -8,8 +8,6 @@
         <div class="articulos">
             <h2><a href="{% url 'articulos:detalle' slug=articulos.slug%}">{{ articulos.titulo }}</a> </h2>
             <p>{{ articulos.snippet }}</p>
-            <p>{{ articulos.autor }}</p>
-            <p>{{ articulos.creado_por }}</p>
         </div>
         {% endfor %}
     </div>

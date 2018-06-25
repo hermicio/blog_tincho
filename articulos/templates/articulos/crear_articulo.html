@@ -3,8 +3,23 @@
 {% block content%}
     <p1>Listas de articulos</p1>
     <div class="create-articulos">
-        <div class="articulos">
-            <h2>Crear un nuevo articulo</h2>
-        </div>
+        <h2>Crear un nuevo articulo</h2>
+        <form class = "site-form" action="{% url 'articulos:crear'%}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {% for field in form %}
+              <p>
+                {{ field.label_tag }}<br>
+                {{ field }}
+                {% if field.help_text %}
+                  <small style="color: grey">{{ field.help_text }}</small>
+                {% endif %}
+                {% for error in field.errors %}
+                  <p style="color: red">{{ error }}</p>
+                {% endfor %}
+              </p>
+            {% endfor %}
+
+            <input type="submit" value="Crear">
+        </form>
     </div>
 {% endblock%}

@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.contrib.auth.models import User
 # Create your models here.
 
 class Articulos(models.Model):
@@ -7,15 +7,12 @@ class Articulos(models.Model):
     slug = models.SlugField()
     cuerpo = models.TextField()
     fecha_creacion = models.DateTimeField(auto_now_add=True)
-    autor = models.CharField(max_length=60)
+    autor = models.ForeignKey(User, default=None,on_delete=models.CASCADE)
     thumb = models.ImageField(default='default.png', blank=True)
 
 
     def __str__(self):
         return self.titulo
-
-    def creado_por(self):
-        return self.autor
 
     def snippet(self):
         return self.cuerpo[:100] + '....'
